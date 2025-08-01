@@ -5,38 +5,66 @@
   padding: 0px;
   margin: 0px;
 
-  color: var(--texto-primeiro);
+  color: var(--giz);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h2 {
   color: var(--texto-segundo);
+  padding: 3px;
+}
+
+p{
+  text-indent: 1rem;
+  padding: 5px;
 }
 
 :root {
-  /* Cores base */
-  --fundo-escura: #121212;
-  --cartao-escura: #1E1E1E;
-  --borda-escura: #2D2D2D;
-
-  /* Verdes */
-  --primeira-verde: #3A5A40;
-  --sobrepor-verde: #588157;
-  --claro-verde: #A3B18A;
-
-  /* Textos */
-  --texto-primeiro: #E0E0E0;
-  --texto-segundo: #BDBDBD;
+  /* Cores base (Dark Mode) */
+  --preto-veludo: #0A0A0A;         /* Fundo principal */
+  --preto-carvão: #1A1A1A;         /* Elementos secundários */
+  
+  /* Cores de destaque (Inspiradas em ateliês de arte) */
+  --terra-siena: #E07A5F;          /* Coral terroso - para CTAs */
+  --ocre-dourado: #D4A373;         /* Dourado suave - detalhes */
+  --linho: #F4F1DE;                /* Texto claro */
+  --verde-musgo: #606C38;          /* Verde artesanal */
+  
+  /* Cores neutras */
+  --giz: #E9EDE9;                  /* Texto principal */
+  --argila: #D7CDC3;               /* Texto secundário */
 }
 
 body {
+  background-color: var(--preto-veludo);
+  color: var(--branco-suave);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
   width: 100vw;
   height: 100vh;
-  background-color: var(--fundo-escura);
 }
+
+/* Tipografia especial para títulos */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--verde-musgo);
+}
+
+h1 {
+  font-size: 2.5rem;
+  border-bottom: 2px solid var(--verde-musgo);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+
 
 header {
   width: 100vw;
+
+  position: fixed;
+  bottom: 0px;
 }
 
 nav {
@@ -45,29 +73,29 @@ nav {
   justify-content: space-evenly;
 
   width: 100vw;
-  position: fixed;
-  top: 0px;
 
   color: var(--texto-primeiro);
-  background-color: var(--primeira-verde);
+  background-color: var(--terra-siena);
 
   padding: 9px;
-  border-radius: 0px 0px 10px 10px;
-  box-shadow: 0px 1px 11px var(--sobrepor-verde);
+  box-shadow: 0px -3px 5px var(--terra-siena);
+  border-radius: 10px 10px 0px 0px;
+  border: 1px solid var(--ocre-dourado);
+  border-bottom: none;
   transition: 1s;
+  z-index: 2;
 
   font-variant: small-caps;
 }
 
 nav:hover {
-  padding-top: 45px;
+  padding-bottom: 45px;
   transition: 1s;
   z-index: 2;
 }
 
 main {
   position: relative;
-  top: 40px;
 }
 
 #paiBtnNavegarFt {
@@ -76,47 +104,26 @@ main {
 
   width: 100vw;
 
-  background-color: var(--borda-escura);
-  box-shadow: inset 0px 0px 30px var(--fundo-escura);
+  background-color: var(--cinza-escuro);
+  box-shadow: inset 0px 0px 30px var(--preto-profundo);
+
+  
+  background-image: url(imagens/roupa1.jpg);
+  background-size: cover;
+  animation: mudarFundo 10s infinite;
 }
 
 section#ftRoupas {
   display: flex;
   align-items: center;
-  overflow-x: auto;
-  scrollbar-width: none;
-
+  contain: layout;
+  width: 100vw;
+  animation: carrosel 10s infinite;
 
   padding: 0px 40px;
 }
 
-.prev {
-  background-color: rgba(128, 128, 128, 0.319);
-  border-radius: 50% 50%;
-
-  color: white;
-  padding: 3px;
-  scale: 0.8;
-  border: none;
-
-  position: absolute;
-
-}
-
-.next {
-  background-color: rgba(128, 128, 128, 0.319);
-  border-radius: 50% 50%;
-
-  color: white;
-  padding: 3px;
-  scale: 0.8;
-  border: none;
-
-  position: absolute;
-  right: 3px;
-}
-
-figure {
+figure{
   margin-left: 0px 10px;
 }
 
@@ -124,9 +131,38 @@ img {
   width: 280px;
   border-radius: 10px;
   margin: 10px;
-
 }
 
-.texto {
-  padding: 7px;
+@keyframes carrosel {
+  0%{
+    transform: translateX(0);
+    transition: 1s;
+  }
+
+  33%{
+    transform: translateX(-305px);
+    transition: 1s;
+  }
+
+  66%{
+    transform: translateX(-610px);
+    transition: 1s;
+  }
+}
+
+@keyframes mudarFundo {
+  0%{
+    background-image: url(imagens/roupa1.jpg);
+    transition: 1s;
+  }
+
+  33%{
+    background-image: url(imagens/roupa2.jpg);
+    transition: 1s;
+  }
+
+  66%{
+    background-image: url(imagens/roupa3.jpg);
+    transition: 1s;
+  }
 }
